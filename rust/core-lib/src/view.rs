@@ -514,7 +514,8 @@ impl View {
         for &(sel_start, sel_end) in hls {
             rendered_styles.push((sel_start as isize) - ix);
             rendered_styles.push(sel_end as isize - sel_start as isize);
-            rendered_styles.push(1);
+//            rendered_styles.push(1);
+            rendered_styles.push(0);
             ix = sel_end as isize;
         }
         for (iv, style) in style_spans.iter() {
@@ -804,7 +805,7 @@ impl View {
             })
         };
 
-//        self.set_dirty(text);
+        self.set_dirty(text);           // todo
         self.find.do_find(text, search_string, case_sensitive)
     }
 
