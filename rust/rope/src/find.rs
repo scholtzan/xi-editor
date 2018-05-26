@@ -24,7 +24,7 @@ use regex::RegexBuilder;
 use std::str;
 
 
-const REGEX_SIZE_LIMIT: usize = 10000;
+const REGEX_SIZE_LIMIT: usize = 100000;
 
 /// The result of a [`find`][find] operation.
 /// 

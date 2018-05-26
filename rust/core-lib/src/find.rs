@@ -181,6 +181,20 @@ impl Find {
                     continue;
                 }
 
+                // in case current cursor matches search result (for example query a* matches)
+                // all cursor positions, then cursor needs to be increased so that search
+                // continues at next position. Otherwise, search will result in overflow since
+                // search will always repeat at current cursor position.
+                if start == end {
+                    // determine whether end of text is reached and stop search or increase
+                    // cursor manually
+                    if end + 1 >= text_len {
+                        break;
+                    } else {
+                        cursor.set(end + 1);
+                    }
+                }
+
                 // add_range_distinct() above removes ambiguous regions after the added
                 // region, if something has been deleted, everything thereafter is
                 // invalidated
